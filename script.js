@@ -37,23 +37,7 @@ const appearOnScroll = new IntersectionObserver(function(entries, observer) {
 fadeElements.forEach(element => {
     appearOnScroll.observe(element);
 });
-// --- Lógica do Menu Mobile (Hambúrguer) ---
-const mobileMenu = document.getElementById('mobile-menu');
-const navLinks = document.getElementById('nav-links');
 
-// Abre e fecha o menu ao clicar no botão
-mobileMenu.addEventListener('click', () => {
-    navLinks.classList.toggle('active');
-    mobileMenu.classList.toggle('is-active'); // Transforma em X
-});
-
-// Fecha o menu automaticamente após clicar em um link (para mobile)
-document.querySelectorAll('.nav-links a').forEach(link => {
-    link.addEventListener('click', () => {
-        navLinks.classList.remove('active');
-        mobileMenu.classList.remove('is-active');
-    });
-});
 // --- Lógica do Menu Mobile (Hambúrguer) ---
 const mobileMenu = document.getElementById('mobile-menu');
 const navLinks = document.getElementById('nav-links');
