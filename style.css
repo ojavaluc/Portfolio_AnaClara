@@ -243,9 +243,61 @@ footer {
     transform: translateY(0);
 }
 
-/* Responsividade */
+/* Configuração do botão menu (Hambúrguer) - oculto no PC */
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    gap: 5px;
+}
+
+.menu-toggle .bar {
+    width: 25px;
+    height: 3px;
+    background-color: var(--primary-color);
+    transition: all 0.3s ease-in-out;
+}
+
+/* Responsividade (Mobile) */
 @media (max-width: 768px) {
-    .nav-links { display: none; } /* Em um projeto real, pode-se adicionar um menu hambúrguer aqui */
+    .menu-toggle {
+        display: flex;
+        z-index: 1001; /* Garante que o botão fique acima de tudo */
+    }
+
+    .nav-links {
+        position: absolute;
+        top: 70px; /* Logo abaixo da barra de navegação */
+        left: -100%; /* Esconde o menu fora da tela */
+        width: 100%;
+        background-color: #fff;
+        flex-direction: column;
+        align-items: center;
+        padding: 20px 0;
+        box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+        transition: left 0.4s ease; /* Animação de deslizar */
+    }
+
+    /* Classe que o JS vai adicionar para mostrar o menu */
+    .nav-links.active {
+        left: 0; 
+    }
+
+    .nav-links li {
+        margin: 15px 0;
+    }
+
+    /* Transforma o ícone de hambúrguer em um "X" quando aberto */
+    .menu-toggle.is-active .bar:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+    .menu-toggle.is-active .bar:nth-child(2) {
+        opacity: 0;
+    }
+    .menu-toggle.is-active .bar:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+    }
+
     .hero h1 { font-size: 2.2rem; }
     .contact-info { flex-direction: column; gap: 10px; }
 }
